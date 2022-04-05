@@ -1,0 +1,223 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_0___Main_BR11" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(njl:JObject)" />
+    <x:Property Name="in_dtCOVPMain" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_StatusProgress" Type="InArgument(x:String)" />
+    <x:Property Name="in_ObjectType" Type="InArgument(x:String)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>926,1565</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_0___Main_BR11_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="30">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_0___Main_Hexa03" sap:VirtualizedContainerService.HintSize="620,1500" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_COVPMain" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_OrdersOR" />
+      <Variable x:TypeArguments="x:String" Name="str_FileNameExtracted" />
+      <Variable x:TypeArguments="x:String" Name="str_FilePathExtracted" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_OrdersPR" />
+      <Variable x:TypeArguments="x:String" Name="str_Distributor" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="578,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Flow to decide type of object to extract on hexa&quot; + in_TransactionItem.SpecificContent(&quot;Distributor&quot;).ToString +&quot;-&quot;+in_ObjectType+&quot;-&quot;+in_TransactionItem.SpecificContent(&quot;TransactionCode&quot;).ToString]" />
+    <ui:MultipleAssign DisplayName="Get Initial Parameters" sap:VirtualizedContainerService.HintSize="578,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dt_COVPMain]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[in_dtCOVPMain]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_ObjectType]" sap:VirtualizedContainerService.HintSize="578,768" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Sequence x:Key="OR" DisplayName="Sequence to Extract OR files" sap:VirtualizedContainerService.HintSize="538,562" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="496,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\Create OR Orders.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOrdersOR">[dt_OrdersOR]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMainCOVP">[dt_COVPMain]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_FileNameOR">[in_Config.SelectToken("BR11.Extract_Orders.FileName").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_FilePathOR">[in_Config.SelectToken("BR11.Extract_Orders.Path").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_DistributorCode">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;TransactionCode&quot;).ToString]" sap:VirtualizedContainerService.HintSize="496,318" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CJ74" DisplayName="Invoke 2 - ORCJ74 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\CJ74\2 - ORCJ74.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtORsToCJ74">[dt_OrdersOR]</InArgument>
+              <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ObjectType">[in_ObjectType]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">[str_FileNameExtracted]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_DirectoryPath">[str_FilePathExtracted]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DistributorCode">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="KOK3" DisplayName="invoke 2 - ORKOK3 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\KOK3\2 - ORKOK3.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtORsToCJ74">[dt_OrdersOR]</InArgument>
+              <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ObjectType">[in_ObjectType]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">[str_FileNameExtracted]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_DirectoryPath">[str_FilePathExtracted]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DistributorCode">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Switch>
+      </Sequence>
+      <Sequence x:Key="PR" DisplayName=" Sequence to Extract PR Objects" sap:VirtualizedContainerService.HintSize="538,562" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WorkFlow to Create PR Files" sap:VirtualizedContainerService.HintSize="496,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\Create PR Orders.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOrdersPR">[dt_OrdersPR]</OutArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_bolCreatedPR" />
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMainCOVP">[dt_COVPMain]</InArgument>
+            <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Distributor">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;TransactionCode&quot;).ToString]" sap:VirtualizedContainerService.HintSize="496,318" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CJ74" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\CJ74\2 - PRCJ74.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtPRsToCJ74">[dt_OrdersPR]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OrderType">[in_ObjectType]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DistributorCode">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_DirectoryPath">[str_FilePathExtracted]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">[str_FileNameExtracted]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CN43N" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\03\CN43N\2 - PRCN43N.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtPRsToCJ74">[dt_OrdersPR]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DistributorCode">[in_TransactionItem.SpecificContent("Distributor").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ObjectType">[in_ObjectType]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_DirectoryPath">[str_FilePathExtracted]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">[str_FileNameExtracted]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Switch>
+      </Sequence>
+    </Switch>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;Distributor&quot;).ToString]" sap:VirtualizedContainerService.HintSize="578,179" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+      <Assign x:Key="BR2O" DisplayName="Assign Distributor" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str_Distributor]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_Config.SelectToken("HEXA.DistribuidoraGO").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="BR11" DisplayName="Assign Distributor" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str_Distributor]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_Config.SelectToken("HEXA.DistribuidoraRJ").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="BR15" DisplayName="Assign Distributor" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str_Distributor]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_Config.SelectToken("HEXA.DistribuidoraCE").ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Switch>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow To Update Hexa File" sap:VirtualizedContainerService.HintSize="578,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processo\Update Hexa\Update Hexa.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FileName">[str_FileNameExtracted]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[str_FilePathExtracted]</InArgument>
+        <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DirectoryPath">[str_FilePathExtracted]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Distributor">[str_Distributor]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>
